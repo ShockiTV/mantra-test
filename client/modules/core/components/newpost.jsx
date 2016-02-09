@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/lib/raised-button';
 
 class NewPost extends React.Component {
   render() {
@@ -10,12 +11,13 @@ class NewPost extends React.Component {
 
         <input ref="titleRef" type="Text" placeholder="Enter your post title." /> <br/>
         <textarea ref="contentRef" placeholder="Enter your post content." /> <br/>
-        <button onClick={this.createPost.bind(this)}>Add New</button>
+        <RaisedButton label="Add New" onClick={this.createPost.bind(this)}/>
       </div>
     );
   }
 
   createPost() {
+    console.log("newpost", this);
     const {create} = this.props;
     const {titleRef, contentRef} = this.refs;
 

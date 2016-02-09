@@ -13,3 +13,6 @@ const app = createApp(context);
 app.loadModule(coreModule);
 app.loadModule(commentsModule);
 app.init();
+app.context.injectTapEventPlugin();
+console.log(app);
+

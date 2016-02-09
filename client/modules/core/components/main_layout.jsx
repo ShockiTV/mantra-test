@@ -1,11 +1,16 @@
 import React from 'react';
+import AppBar from 'material-ui/lib/app-bar';
 import Navigation from './navigation.jsx';
 
 const Layout = ({content = () => null }) => (
   <div>
     <header>
-    <h1>Mantra Voice</h1>
-    <Navigation />
+      <AppBar
+          title="Mantra Voice"
+          showMenuIconButton={false}
+          children={<Navigation />}
+      />
+
     </header>
 
     <div>
