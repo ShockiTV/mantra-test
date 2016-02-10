@@ -12,6 +12,6 @@ textarea {
     height: 200px;
 }
 
-.error-creating {
+.create-error {
     color: red;
 }

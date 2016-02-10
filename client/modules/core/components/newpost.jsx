@@ -1,15 +1,16 @@
 import React from 'react';
+import CSSModules from 'react-css-modules';
 import styles from "./newpost.mss";
 import RaisedButton from 'material-ui/lib/raised-button';
 
 class NewPost extends React.Component {
   render() {
+    console.log("styles", this.props.styles);
     const {error} = this.props;
-    console.log("styles", styles);
     return (
       <div className="new-post">
         <h2>Add New Post</h2>
-        {error ? <p className={styles["error-creating"]}>{error}</p> : null}
+        {error ? <p styleName='create-error'>{error}</p> : null}
 
         <input ref="titleRef" type="Text" placeholder="Enter your post title." /> <br/>
         <textarea ref="contentRef" placeholder="Enter your post content." /> <br/>
@@ -27,4 +28,4 @@ class NewPost extends React.Component {
   }
 }
 
-export default NewPost;
+export default CSSModules(NewPost, styles);
