@@ -6,8 +6,15 @@ import PostList from './containers/postlist';
 import Post from './containers/post';
 import NewPost from './containers/newpost';
 
-export default function (injectDeps, {FlowRouter}) {
+export default function (injectDeps, {FlowRouter, LocalState}) {
   const MainLayoutCtx = injectDeps(MainLayout);
+
+  LocalState.set("ROUTE_LIST",[]);
+
+  FlowRouter.onRouteRegister( (route) => {
+       LocalState.set("ROUTE_LIST", [ ...LocalState.get("ROUTE_LIST"), route]);
+    }
+  )
 
   FlowRouter.route('/', {
     name: 'posts.list',
@@ -15,6 +22,10 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx, {
         content: () => (<PostList />)
       });
+    },
+    navigation: {
+      label: "Home",
+      position: 0
     }
   });
 
@@ -33,6 +44,10 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx, {
         content: () => (<NewPost/>)
       });
+    },
+    navigation: {
+      label: "New Post",
+      position: 1
     }
   });
 }

@@ -2,10 +2,15 @@ import Navigation from '../components/navigation.jsx';
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 
 export const composer = ({context}, onData) => {
-  const {LocalState} = context();
-  const currentRoute = LocalState.get('CURRENT_ROUTE');
-  const testNav = "asdf";
-  onData(null, {currentRoute, testNav});
+  const {FlowRouter, LocalState} = context();
+  const currentRoute = FlowRouter.current().route.name;
+  console.log("route local state:", LocalState.get("ROUTE_LIST"));
+  const routeList = _.chain(LocalState.get("ROUTE_LIST"))
+    .filter( route => (!! route.options.navigation))
+    .sort( route => route.options.navigation.position)
+    .value();
+  console.log("route list: ", routeList);
+  onData(null, {currentRoute, routeList});
 };
 
 export const depsMapper = (context, actions) => ({

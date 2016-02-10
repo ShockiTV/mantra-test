@@ -4,13 +4,22 @@ import Tab from 'material-ui/lib/tabs/tab';
 
 class Navigation extends React.Component {
   render() {
-    console.log(this);
+    //console.log("current route", this.props.currentRoute);
+    const {currentRoute, routeList} = this.props;
     return (
       <div>
         <b> Navigation: </b>
-        <Tabs>
-          <Tab label="Home" onClick={this.changeRoute.bind(this, "/")}/>
-          <Tab label="New Post" onClick={this.changeRoute.bind(this, "/new-post")}/>
+        <Tabs
+          value={currentRoute}
+        >
+          {routeList.map(route => (
+              <Tab
+                key={route.name}
+                value={route.name}
+                label={route.options.navigation.label}
+                onClick={this.changeRoute.bind(this, route.path)}
+              />
+          ))}
         </Tabs>
       </div>
     )
