@@ -1,6 +1,6 @@
 import React from 'react';
 import AppBar from 'material-ui/lib/app-bar';
-import Navigation from './navigation.jsx';
+import Navigation from '../containers/navigation.js';
 
 const Layout = ({content = () => null }) => (
   <div>
