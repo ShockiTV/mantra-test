@@ -7,7 +7,7 @@ export const composer = ({context}, onData) => {
   console.log("route local state:", LocalState.get("ROUTE_LIST"));
   const routeList = _.chain(LocalState.get("ROUTE_LIST"))
     .filter( route => (!! route.options.navigation))
-    .sort( route => route.options.navigation.position)
+    .sortBy( route => route.options.navigation.position)
     .value();
   console.log("route list: ", routeList);
   onData(null, {currentRoute, routeList});
