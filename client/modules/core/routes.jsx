@@ -7,15 +7,21 @@ import Post from './containers/post';
 import NewPost from './containers/newpost';
 import GoogleMap from '../map/containers/googleMap';
 
-export default function (injectDeps, {FlowRouter, LocalState}) {
+
+
+export default function (injectDeps, {FlowRouter, LocalState, NavigationStore}) {
   const MainLayoutCtx = injectDeps(MainLayout);
 
-  LocalState.set("ROUTE_LIST",[]);
+  //LocalState.set("ROUTE_LIST",[]);
+
 
   FlowRouter.onRouteRegister( (route) => {
-       LocalState.set("ROUTE_LIST", [ ...LocalState.get("ROUTE_LIST"), route]);
+        NavigationStore.dispatch({
+          type: 'ADD_ROUTE',
+          newRoute: route
+        });
     }
-  )
+  );
 
   FlowRouter.route('/', {
     name: 'posts.list',
@@ -52,16 +58,16 @@ export default function (injectDeps, {FlowRouter, LocalState}) {
     }
   });
 
-  FlowRouter.route('/map', {
-    name: 'map',
-    action() {
-      mount(MainLayoutCtx, {
-        content: () => (<GoogleMap/>)
-      });
-    },
-    navigation: {
-      label: "Map",
-      position: 2
-    }
-  });
+  //FlowRouter.route('/map', {
+  //  name: 'map',
+  //  action() {
+  //    mount(MainLayoutCtx, {
+  //      content: () => (<GoogleMap/>)
+  //    });
+  //  },
+  //  navigation: {
+  //    label: "Map",
+  //    position: 2
+  //  }
+  //});
 }

@@ -5,6 +5,23 @@ import {ReactiveDict} from 'meteor/reactive-dict';
 import {Tracker} from 'meteor/tracker';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {GoogleMaps} from 'meteor/dburles:google-maps';
+//import Redux from 'redux';
+//
+//console.log("redux: ", Redux);
+import {createStore} from 'redux';
+
+const defaultState = { routeList: []};
+const store = createStore((state = defaultState, action) => {
+  switch(action.type) {
+    case 'ADD_ROUTE':
+      return {
+        ...state,
+        routeList: [...state.routeList, action.newRoute ]
+      };
+    default:
+      return state;
+  }
+});
 
 export default function () {
   return {
@@ -14,6 +31,7 @@ export default function () {
     LocalState: new ReactiveDict(),
     Tracker,
     injectTapEventPlugin,
-    GoogleMaps
+    GoogleMaps,
+    NavigationStore: store
   };
 }
