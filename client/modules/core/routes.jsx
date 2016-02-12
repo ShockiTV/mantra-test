@@ -5,6 +5,7 @@ import MainLayout from './components/main_layout.jsx';
 import PostList from './containers/postlist';
 import Post from './containers/post';
 import NewPost from './containers/newpost';
+import GoogleMap from '../map/containers/googleMap';
 
 export default function (injectDeps, {FlowRouter, LocalState}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -48,6 +49,19 @@ export default function (injectDeps, {FlowRouter, LocalState}) {
     navigation: {
       label: "New Post",
       position: 1
+    }
+  });
+
+  FlowRouter.route('/map', {
+    name: 'map',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<GoogleMap/>)
+      });
+    },
+    navigation: {
+      label: "Map",
+      position: 2
     }
   });
 }

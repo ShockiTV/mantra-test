@@ -17,6 +17,7 @@ check@1.1.1-modules.6
 chuangbo:cookie@1.1.0
 coffeescript@1.0.12-modules.6
 cosmos:browserify@0.9.3
+dburles:google-maps@1.1.5
 ddp@1.2.2
 ddp-client@1.2.2-modules.6
 ddp-common@1.2.2

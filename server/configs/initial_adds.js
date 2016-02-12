@@ -1,4 +1,4 @@
-import {Posts} from '/lib/collections';
+import {Posts, Markers} from '/lib/collections';
 
 export default function () {
   if (!Posts.findOne()) {
@@ -7,5 +7,8 @@ export default function () {
       const content = `Post ${lc}'s content is great!`;
       Posts.insert({title, content});
     }
+  }
+  if (!Markers.findOne()) {
+
   }
 }

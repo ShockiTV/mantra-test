@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 
 class NewPost extends React.Component {
   render() {
+    console.log("error2: ", this.props.error2);
     console.log("styles", this.props.styles);
     const {error} = this.props;
     return (

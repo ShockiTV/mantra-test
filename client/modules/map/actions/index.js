@@ -1,9 +1,9 @@
-import comments from './comments';
+import googleMap from './googleMap';
 
 // XXX: Here, we can automatically generate this file based on the
 // actions inside this directory.
 const actions = {
-  comments
+  googleMap
 };
 
 export default actions;

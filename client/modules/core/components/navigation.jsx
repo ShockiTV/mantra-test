@@ -25,8 +25,10 @@ class Navigation extends React.Component {
     )
   }
 
-  changeRoute(newRoute) {
+  changeRoute(newRoute, event, secretArg) {
     const {go} = this.props;
+    console.log("event: ", event);
+    console.log("secret arg: ", secretArg);
     go(newRoute);
   }
 
